@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rtěnky GlamBeauty</title>
   <style>
+    /*
+      Celkový vzhled stránky (barvy pozadí, písmo, okraje atd.) nastavujeme pomocí stylu pro <body>.
+      Tímto určujeme např. růžové pozadí stránky, základní písmo a barvu textu.
+    */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -12,23 +16,55 @@
       background: #fff0f5;
       color: #333;
     }
+
+    /*
+      Hlavička stránky (HEADER) má růžové pozadí a bílý text uprostřed.
+      Obsahuje název webu – značky rtěnek.
+    */
     header {
       background: #e91e63;
       color: white;
       padding: 20px;
       text-align: center;
     }
-    .description {
+
+    /*
+      Sekce pro výběr odstínu rtěnky. Stylujeme ji, aby byla oddělená a uprostřed.
+      Používáme světlé pozadí a odsazení (padding).
+    */
+    .selector {
       padding: 20px;
-      background: #fce4ec;
-      border-bottom: 1px solid #ccc;
+      background: #fff;
+      text-align: center;
     }
+
+    /*
+      Tímto upravujeme vzhled samotného <select> (roletky) a tlačítka <button>.
+      Přidáváme mezery okolo, zaoblení rohů a jemný rámeček.
+    */
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /*
+      Tato část styluje sekci produktů, kde se zobrazují rtěnky.
+      Všechny rtěnky jsou zobrazeny jako boxy vedle sebe pomocí "grid" (mřížka).
+      Díky tomu se hezky přizpůsobují obrazovce (např. na mobilu pod sebou, na PC vedle sebe).
+    */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       padding: 20px;
     }
+
+    /*
+      Každý produkt (rtěnka) má svou vlastní krabičku (div), která má bílý podklad,
+      zaoblené rohy, stín a je zarovnána na střed.
+    */
     .product {
       background: white;
       padding: 15px;
@@ -36,59 +72,74 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: center;
     }
+
+    /*
+      V každém produktu je obrázek rtěnky. Tento styl říká, že obrázek se nemá roztáhnout přes okraj
+      a má také zaoblené rohy.
+    */
     .product img {
       max-width: 100%;
       border-radius: 8px;
     }
+
+    /*
+      Nadpis produktu (např. Červená vášeň) je v elementu <h3>. Tady upravujeme jeho mezery okolo.
+    */
     .product h3 {
       margin: 10px 0 5px;
     }
+
+    /*
+      Popis produktu je v <p> odstavci. Tento styl nastavuje spodní okraj pro mezery mezi prvky.
+    */
     .product p {
       margin: 0 0 10px;
     }
-    .selector {
-      padding: 20px;
-      background: #fff;
-      text-align: center;
-    }
-    select, button {
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+
+    /*
+      Patička stránky (FOOTER). Je uprostřed, má světlé pozadí a obsahuje informaci o značce.
+    */
     footer {
       text-align: center;
       padding: 20px;
       background: #f8f8f8;
     }
+
+    /*
+      Styl pro nákupní košík – text uprostřed, růžové pozadí a vnitřní mezery.
+    */
     .cart {
       text-align: center;
       background: #ffe3f0;
       padding: 20px;
     }
+
+    /*
+      Seznam v košíku nemá odrážky (žádné puntíky) a nemá odsazení.
+    */
     .cart ul {
       list-style-type: none;
       padding: 0;
     }
   </style>
 </head>
+
+<!--
+  Celá viditelná část stránky začíná v <body>. Tady je vše, co návštěvník uvidí:
+  hlavička, výběr, produkty, košík, patička...
+-->
 <body>
+
+<!--
+  Hlavička webu obsahuje název značky. Je to první, co návštěvník vidí.
+-->
   <header>
     <h1>GlamBeauty – Rtěnky pro každou příležitost</h1>
   </header>
 
-  <section class="description">
-    <h2>Jak funguje tato statická webová stránka?</h2>
-    <p>Tato stránka je vytvořena pouze pomocí <strong>HTML</strong>, <strong>CSS</strong> a <strong>JavaScriptu</strong>. Nevyužívá žádný server – veškerý obsah je přímo ve zdrojovém kódu.</p>
-    <ul>
-      <li><strong>&lt;header&gt;</strong> – záhlaví stránky</li>
-      <li><strong>&lt;section&gt;</strong> – obsahové bloky jako výběr rtěnek, produkty, košík</li>
-      <li><strong>JavaScript</strong> – pro filtrování produktů a přidávání do košíku</li>
-    </ul>
-    <p>Žáci si mohou stránku upravit, změnit produkty nebo barvy a hned vidět výsledek.</p>
-  </section>
-
+<!--
+  Výběr odstínu pomocí roletky <select>. Žák si může zkusit přidat nový odstín jako další <option>.
+-->
   <section class="selector">
     <label for="shade">Vyber odstín rtěnky:</label>
     <select id="shade">
@@ -101,6 +152,10 @@
     <button onclick="selectShade()">Zobrazit</button>
   </section>
 
+<!--
+  Zde jsou jednotlivé produkty zobrazené jako boxy.
+  Žáci mohou zkusit přidat další <div class="product"> s vlastní rtěnkou.
+-->
   <section class="products" id="productList">
     <div class="product">
       <img src="https://via.placeholder.com/200x200/ff4081/fff?text=Red+Passion" alt="Červená vášeň">
@@ -130,19 +185,31 @@
       <p><strong>209 Kč</strong></p>
       <button onclick="addToCart('Fialová fantazie', 209)">Přidat do košíku</button>
     </div>
+    
   </section>
 
+<!--
+  Nákupní košík – zde se zobrazí přidané produkty. Každá položka se přidává pomocí JavaScriptu.
+-->
   <section class="cart" id="cart">
     <h2>Košík</h2>
     <ul id="cartItems"></ul>
     <p><strong>Celkem: <span id="total">0</span> Kč</strong></p>
   </section>
 
+<!--
+  Patička webu. Žáci mohou změnit text nebo zkusit přidat rok dynamicky pomocí JavaScriptu.
+-->
   <footer>
     <p>&copy; 2025 GlamBeauty – Váš svět rtěnek</p>
   </footer>
 
+<!--
+  SCRIPT je část, kde běží JavaScript.
+  Zde definujeme funkce, které ovládají chování stránky – například filtrování produktů a přidávání do košíku.
+-->
   <script>
+    // Funkce zobrazí pouze produkty s vybraným odstínem nebo všechny, pokud je zvoleno "Všechny".
     function selectShade() {
       const shade = document.getElementById('shade').value;
       const products = document.querySelectorAll('.product');
@@ -155,6 +222,7 @@
       });
     }
 
+    // Funkce pro přidání produktu do košíku a aktualizaci celkové ceny.
     let total = 0;
     function addToCart(product, price) {
       const list = document.getElementById('cartItems');

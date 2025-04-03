@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rtěnky GlamBeauty</title>
   <style>
-    /* Vzhled celé stránky */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -13,39 +12,29 @@
       background: #fff0f5;
       color: #333;
     }
-
-    /* Hlavička stránky */
     header {
       background: #e91e63;
       color: white;
       padding: 20px;
       text-align: center;
     }
-
-    /* Výběrová sekce s roletkou a tlačítkem */
     .selector {
       padding: 20px;
       background: #fff;
       text-align: center;
     }
-
-    /* Vzhled roletky a tlačítka */
     select, button {
       padding: 10px;
       margin: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
-
-    /* Rozvržení produktů pomocí mřížky */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       padding: 20px;
     }
-
-    /* Styl jednotlivého produktu */
     .product {
       background: white;
       padding: 15px;
@@ -53,38 +42,28 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: center;
     }
-
-    /* Styl obrázku produktu */
     .product img {
-      max-width: 100%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
       border-radius: 8px;
     }
-
-    /* Nadpis produktu */
     .product h3 {
       margin: 10px 0 5px;
     }
-
-    /* Popis produktu */
     .product p {
       margin: 0 0 10px;
     }
-
-    /* Patička stránky */
     footer {
       text-align: center;
       padding: 20px;
       background: #f8f8f8;
     }
-
-    /* Styl sekce košíku */
     .cart {
       text-align: center;
       background: #ffe3f0;
       padding: 20px;
     }
-
-    /* Seznam položek v košíku bez odrážek */
     .cart ul {
       list-style-type: none;
       padding: 0;
@@ -95,7 +74,6 @@
   <header>
     <h1>GlamBeauty – Rtěnky pro každou příležitost</h1>
   </header>
-
   <section class="selector">
     <label for="shade">Vyber odstín rtěnky:</label>
     <select id="shade">
@@ -108,55 +86,51 @@
     </select>
     <button onclick="selectShade()">Zobrazit</button>
   </section>
-
   <section class="products" id="productList">
     <div class="product">
-      <img src="/mnt/data/close-up-lips-with-makeup-them_107420-40701.jpg" alt="Červená vášeň">
+      <img src="data:image/jpeg;base64,5pVyeO+aZqST..." alt="Červená vášeň">
       <h3>Červená vášeň</h3>
       <p>Intenzivní a smyslná červená rtěnka pro každou příležitost.</p>
       <p><strong>199 Kč</strong></p>
       <button onclick="addToCart('Červená vášeň', 199)">Přidat do košíku</button>
     </div>
     <div class="product">
-      <img src="/mnt/data/devushka-litso-ruka-paltsy-chiornyi-manikiur-guby-pomada-sti.jpg" alt="Černá elegance">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="Černá elegance">
       <h3>Černá elegance</h3>
       <p>Odvážná a stylová rtěnka pro výrazný look.</p>
       <p><strong>209 Kč</strong></p>
       <button onclick="addToCart('Černá elegance', 209)">Přidat do košíku</button>
     </div>
     <div class="product">
-      <img src="/mnt/data/free-photo-of-close-up-of-woman-wearing-pink-lipstick.jpeg" alt="Růžová něha">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="Růžová něha">
       <h3>Růžová něha</h3>
       <p>Jemný růžový odstín pro každodenní nošení.</p>
       <p><strong>179 Kč</strong></p>
       <button onclick="addToCart('Růžová něha', 179)">Přidat do košíku</button>
     </div>
     <div class="product">
-      <img src="/mnt/data/pexels-photo-3762446.jpeg" alt="Přírodní lesk">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="Přírodní lesk">
       <h3>Přírodní lesk</h3>
       <p>Nude barva pro přirozený vzhled a lehký lesk.</p>
       <p><strong>189 Kč</strong></p>
       <button onclick="addToCart('Přírodní lesk', 189)">Přidat do košíku</button>
     </div>
     <div class="product">
-      <img src="/mnt/data/rot-guby-pomada-zuby-zerno.jpg" alt="Kávové pokušení">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="Kávové pokušení">
       <h3>Kávové pokušení</h3>
       <p>Originální rtěnka s fialovo-kávovým nádechem.</p>
       <p><strong>219 Kč</strong></p>
       <button onclick="addToCart('Kávové pokušení', 219)">Přidat do košíku</button>
     </div>
   </section>
-
   <section class="cart" id="cart">
     <h2>Košík</h2>
     <ul id="cartItems"></ul>
     <p><strong>Celkem: <span id="total">0</span> Kč</strong></p>
   </section>
-
   <footer>
     <p>&copy; 2025 GlamBeauty – Váš svět rtěnek</p>
   </footer>
-
   <script>
     function selectShade() {
       const shade = document.getElementById('shade').value;
@@ -169,7 +143,6 @@
         }
       });
     }
-
     let total = 0;
     function addToCart(product, price) {
       const list = document.getElementById('cartItems');

@@ -18,6 +18,11 @@
       padding: 20px;
       text-align: center;
     }
+    .description {
+      padding: 20px;
+      background: #fce4ec;
+      border-bottom: 1px solid #ccc;
+    }
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -57,6 +62,15 @@
       padding: 20px;
       background: #f8f8f8;
     }
+    .cart {
+      text-align: center;
+      background: #ffe3f0;
+      padding: 20px;
+    }
+    .cart ul {
+      list-style-type: none;
+      padding: 0;
+    }
   </style>
 </head>
 <body>
@@ -64,9 +78,21 @@
     <h1>GlamBeauty – Rtěnky pro každou příležitost</h1>
   </header>
 
+  <section class="description">
+    <h2>Jak funguje tato statická webová stránka?</h2>
+    <p>Tato stránka je vytvořena pouze pomocí <strong>HTML</strong>, <strong>CSS</strong> a <strong>JavaScriptu</strong>. Nevyužívá žádný server – veškerý obsah je přímo ve zdrojovém kódu.</p>
+    <ul>
+      <li><strong>&lt;header&gt;</strong> – záhlaví stránky</li>
+      <li><strong>&lt;section&gt;</strong> – obsahové bloky jako výběr rtěnek, produkty, košík</li>
+      <li><strong>JavaScript</strong> – pro filtrování produktů a přidávání do košíku</li>
+    </ul>
+    <p>Žáci si mohou stránku upravit, změnit produkty nebo barvy a hned vidět výsledek.</p>
+  </section>
+
   <section class="selector">
     <label for="shade">Vyber odstín rtěnky:</label>
     <select id="shade">
+      <option>Všechny</option>
       <option>Červená vášeň</option>
       <option>Růžová něha</option>
       <option>Nude elegance</option>
@@ -81,25 +107,35 @@
       <h3>Červená vášeň</h3>
       <p>Intenzivní barva a dlouhá výdrž.</p>
       <p><strong>199 Kč</strong></p>
+      <button onclick="addToCart('Červená vášeň', 199)">Přidat do košíku</button>
     </div>
     <div class="product">
       <img src="https://via.placeholder.com/200x200/f06292/fff?text=Pink+Touch" alt="Růžová něha">
       <h3>Růžová něha</h3>
       <p>Jemný tón pro každodenní nošení.</p>
       <p><strong>179 Kč</strong></p>
+      <button onclick="addToCart('Růžová něha', 179)">Přidat do košíku</button>
     </div>
     <div class="product">
       <img src="https://via.placeholder.com/200x200/d7ccc8/333?text=Nude+Glow" alt="Nude elegance">
       <h3>Nude elegance</h3>
       <p>Přirozená krása v elegantním odstínu.</p>
       <p><strong>189 Kč</strong></p>
+      <button onclick="addToCart('Nude elegance', 189)">Přidat do košíku</button>
     </div>
     <div class="product">
       <img src="https://via.placeholder.com/200x200/ba68c8/fff?text=Purple+Vibe" alt="Fialová fantazie">
       <h3>Fialová fantazie</h3>
       <p>Odvážný a výrazný vzhled.</p>
       <p><strong>209 Kč</strong></p>
+      <button onclick="addToCart('Fialová fantazie', 209)">Přidat do košíku</button>
     </div>
+  </section>
+
+  <section class="cart" id="cart">
+    <h2>Košík</h2>
+    <ul id="cartItems"></ul>
+    <p><strong>Celkem: <span id="total">0</span> Kč</strong></p>
   </section>
 
   <footer>
@@ -111,8 +147,22 @@
       const shade = document.getElementById('shade').value;
       const products = document.querySelectorAll('.product');
       products.forEach(p => {
-        p.style.display = p.innerText.includes(shade) ? 'block' : 'none';
+        if (shade === 'Všechny') {
+          p.style.display = 'block';
+        } else {
+          p.style.display = p.innerText.includes(shade) ? 'block' : 'none';
+        }
       });
+    }
+
+    let total = 0;
+    function addToCart(product, price) {
+      const list = document.getElementById('cartItems');
+      const item = document.createElement('li');
+      item.textContent = `${product} – ${price} Kč`;
+      list.appendChild(item);
+      total += price;
+      document.getElementById('total').innerText = total;
     }
   </script>
 </body>

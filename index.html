@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rtěnky GlamBeauty</title>
   <style>
-    /*
-      Celkový vzhled stránky (barvy pozadí, písmo, okraje atd.) nastavujeme pomocí stylu pro <body>.
-      Tímto určujeme např. růžové pozadí stránky, základní písmo a barvu textu.
-    */
+    /* Vzhled celé stránky */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -17,10 +14,7 @@
       color: #333;
     }
 
-    /*
-      Hlavička stránky (HEADER) má růžové pozadí a bílý text uprostřed.
-      Obsahuje název webu – značky rtěnek.
-    */
+    /* Hlavička stránky */
     header {
       background: #e91e63;
       color: white;
@@ -28,20 +22,14 @@
       text-align: center;
     }
 
-    /*
-      Sekce pro výběr odstínu rtěnky. Stylujeme ji, aby byla oddělená a uprostřed.
-      Používáme světlé pozadí a odsazení (padding).
-    */
+    /* Výběrová sekce s roletkou a tlačítkem */
     .selector {
       padding: 20px;
       background: #fff;
       text-align: center;
     }
 
-    /*
-      Tímto upravujeme vzhled samotného <select> (roletky) a tlačítka <button>.
-      Přidáváme mezery okolo, zaoblení rohů a jemný rámeček.
-    */
+    /* Vzhled roletky a tlačítka */
     select, button {
       padding: 10px;
       margin: 10px;
@@ -49,11 +37,7 @@
       border: 1px solid #ccc;
     }
 
-    /*
-      Tato část styluje sekci produktů, kde se zobrazují rtěnky.
-      Všechny rtěnky jsou zobrazeny jako boxy vedle sebe pomocí "grid" (mřížka).
-      Díky tomu se hezky přizpůsobují obrazovce (např. na mobilu pod sebou, na PC vedle sebe).
-    */
+    /* Rozvržení produktů pomocí mřížky */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -61,10 +45,7 @@
       padding: 20px;
     }
 
-    /*
-      Každý produkt (rtěnka) má svou vlastní krabičku (div), která má bílý podklad,
-      zaoblené rohy, stín a je zarovnána na střed.
-    */
+    /* Styl jednotlivého produktu */
     .product {
       background: white;
       padding: 15px;
@@ -73,144 +54,110 @@
       text-align: center;
     }
 
-    /*
-      V každém produktu je obrázek rtěnky. Tento styl říká, že obrázek se nemá roztáhnout přes okraj
-      a má také zaoblené rohy.
-    */
+    /* Styl obrázku produktu */
     .product img {
       max-width: 100%;
       border-radius: 8px;
     }
 
-    /*
-      Nadpis produktu (např. Červená vášeň) je v elementu <h3>. Tady upravujeme jeho mezery okolo.
-    */
+    /* Nadpis produktu */
     .product h3 {
       margin: 10px 0 5px;
     }
 
-    /*
-      Popis produktu je v <p> odstavci. Tento styl nastavuje spodní okraj pro mezery mezi prvky.
-    */
+    /* Popis produktu */
     .product p {
       margin: 0 0 10px;
     }
 
-    /*
-      Patička stránky (FOOTER). Je uprostřed, má světlé pozadí a obsahuje informaci o značce.
-    */
+    /* Patička stránky */
     footer {
       text-align: center;
       padding: 20px;
       background: #f8f8f8;
     }
 
-    /*
-      Styl pro nákupní košík – text uprostřed, růžové pozadí a vnitřní mezery.
-    */
+    /* Styl sekce košíku */
     .cart {
       text-align: center;
       background: #ffe3f0;
       padding: 20px;
     }
 
-    /*
-      Seznam v košíku nemá odrážky (žádné puntíky) a nemá odsazení.
-    */
+    /* Seznam položek v košíku bez odrážek */
     .cart ul {
       list-style-type: none;
       padding: 0;
     }
   </style>
 </head>
-
-<!--
-  Celá viditelná část stránky začíná v <body>. Tady je vše, co návštěvník uvidí:
-  hlavička, výběr, produkty, košík, patička...
--->
 <body>
-
-<!--
-  Hlavička webu obsahuje název značky. Je to první, co návštěvník vidí.
--->
   <header>
     <h1>GlamBeauty – Rtěnky pro každou příležitost</h1>
   </header>
 
-<!--
-  Výběr odstínu pomocí roletky <select>. Žák si může zkusit přidat nový odstín jako další <option>.
--->
   <section class="selector">
     <label for="shade">Vyber odstín rtěnky:</label>
     <select id="shade">
       <option>Všechny</option>
       <option>Červená vášeň</option>
+      <option>Černá elegance</option>
       <option>Růžová něha</option>
-      <option>Nude elegance</option>
-      <option>Fialová fantazie</option>
+      <option>Přírodní lesk</option>
+      <option>Kávové pokušení</option>
     </select>
     <button onclick="selectShade()">Zobrazit</button>
   </section>
 
-<!--
-  Zde jsou jednotlivé produkty zobrazené jako boxy.
-  Žáci mohou zkusit přidat další <div class="product"> s vlastní rtěnkou.
--->
   <section class="products" id="productList">
     <div class="product">
-      <img src="https://ibb.co/GvXKp4zv" alt="Červená vášeň">
+      <img src="/mnt/data/close-up-lips-with-makeup-them_107420-40701.jpg" alt="Červená vášeň">
       <h3>Červená vášeň</h3>
-      <p>Intenzivní barva a dlouhá výdrž.</p>
+      <p>Intenzivní a smyslná červená rtěnka pro každou příležitost.</p>
       <p><strong>199 Kč</strong></p>
       <button onclick="addToCart('Červená vášeň', 199)">Přidat do košíku</button>
     </div>
     <div class="product">
-      <img src="https://ibb.co/gM7Vx1jF" alt="Růžová něha">
+      <img src="/mnt/data/devushka-litso-ruka-paltsy-chiornyi-manikiur-guby-pomada-sti.jpg" alt="Černá elegance">
+      <h3>Černá elegance</h3>
+      <p>Odvážná a stylová rtěnka pro výrazný look.</p>
+      <p><strong>209 Kč</strong></p>
+      <button onclick="addToCart('Černá elegance', 209)">Přidat do košíku</button>
+    </div>
+    <div class="product">
+      <img src="/mnt/data/free-photo-of-close-up-of-woman-wearing-pink-lipstick.jpeg" alt="Růžová něha">
       <h3>Růžová něha</h3>
-      <p>Jemný tón pro každodenní nošení.</p>
+      <p>Jemný růžový odstín pro každodenní nošení.</p>
       <p><strong>179 Kč</strong></p>
       <button onclick="addToCart('Růžová něha', 179)">Přidat do košíku</button>
     </div>
     <div class="product">
-      <img src="https://ibb.co/ccNYqDZb" alt="Nude elegance">
-      <h3>Nude elegance</h3>
-      <p>Přirozená krása v elegantním odstínu.</p>
+      <img src="/mnt/data/pexels-photo-3762446.jpeg" alt="Přírodní lesk">
+      <h3>Přírodní lesk</h3>
+      <p>Nude barva pro přirozený vzhled a lehký lesk.</p>
       <p><strong>189 Kč</strong></p>
-      <button onclick="addToCart('Nude elegance', 189)">Přidat do košíku</button>
+      <button onclick="addToCart('Přírodní lesk', 189)">Přidat do košíku</button>
     </div>
     <div class="product">
-    <a href="https://ibb.co/LD6J920q"><img src="https://i.ibb.co/LD6J920q/rot-guby-pomada-zuby-zerno.jpg" alt="rot-guby-pomada-zuby-zerno" border="0" /></a>
-      
-      <h3>Fialová fantazie</h3>
-      <p>Odvážný a výrazný vzhled.</p>
-      <p><strong>209 Kč</strong></p>
-      <button onclick="addToCart('Fialová fantazie', 209)">Přidat do košíku</button>
+      <img src="/mnt/data/rot-guby-pomada-zuby-zerno.jpg" alt="Kávové pokušení">
+      <h3>Kávové pokušení</h3>
+      <p>Originální rtěnka s fialovo-kávovým nádechem.</p>
+      <p><strong>219 Kč</strong></p>
+      <button onclick="addToCart('Kávové pokušení', 219)">Přidat do košíku</button>
     </div>
-    
   </section>
 
-<!--
-  Nákupní košík – zde se zobrazí přidané produkty. Každá položka se přidává pomocí JavaScriptu.
--->
   <section class="cart" id="cart">
     <h2>Košík</h2>
     <ul id="cartItems"></ul>
     <p><strong>Celkem: <span id="total">0</span> Kč</strong></p>
   </section>
 
-<!--
-  Patička webu. Žáci mohou změnit text nebo zkusit přidat rok dynamicky pomocí JavaScriptu.
--->
   <footer>
     <p>&copy; 2025 GlamBeauty – Váš svět rtěnek</p>
   </footer>
 
-<!--
-  SCRIPT je část, kde běží JavaScript.
-  Zde definujeme funkce, které ovládají chování stránky – například filtrování produktů a přidávání do košíku.
--->
   <script>
-    // Funkce zobrazí pouze produkty s vybraným odstínem nebo všechny, pokud je zvoleno "Všechny".
     function selectShade() {
       const shade = document.getElementById('shade').value;
       const products = document.querySelectorAll('.product');
@@ -223,7 +170,6 @@
       });
     }
 
-    // Funkce pro přidání produktu do košíku a aktualizaci celkové ceny.
     let total = 0;
     function addToCart(product, price) {
       const list = document.getElementById('cartItems');
